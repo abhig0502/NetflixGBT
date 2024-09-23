@@ -1,8 +1,12 @@
-import { Backdrop, Modal } from "@mui/material";
+import { Modal } from "@mui/material";
 import { Box } from "@mui/material";
 import { useState } from "react";
 import checkValidData from "../utils/Validate";
 import { useRef } from "react";
+import { auth } from "../utils/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 // import { useDispatch } from "react-redux";
 // import { setUser } from "./UserSlice";
 
@@ -32,7 +36,7 @@ const LoginModal = ({ setShowLoginModal }) => {
   // console.log(emailId);
   // console.log(signInPassword);
 
-//   const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
 
   const [isSignInForm, setIsSignInForm] = useState(true);
   const toggleSignInForm = () => {
@@ -43,6 +47,35 @@ const LoginModal = ({ setShowLoginModal }) => {
     const message = checkValidData(email, signInPassword);
     console.log(message);
     setErrorMessage(message);
+    if (message) return;
+
+    //SignIn and SignUp logic
+    if (!isSignInForm) {
+      createUserWithEmailAndPassword(auth, email, signInPassword)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+          setErrorMessage(errorCode + "--" + errorMessage);
+        });
+    } else {
+      signInWithEmailAndPassword(auth, email, signInPassword)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode+"--"+errorMessage);
+        });
+    }
   };
 
   return (
@@ -93,9 +126,7 @@ const LoginModal = ({ setShowLoginModal }) => {
                 setSignInPassword(e.target.value);
               }}
             />
-            <button
-              className="py-3 px-[152px]  mt-2 my-3 ml-7 text-white justify-center bg-red-700 rounded-lg"
-            >
+            <button className="py-3 px-[152px]  mt-2 my-3 ml-7 text-white justify-center bg-red-700 rounded-lg" onClick={handleClickButton}>
               {isSignInForm ? "Sign in" : "Sign Up"}
             </button>
             <p className="text-red-600">{errorMessage}</p>
