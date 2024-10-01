@@ -6,7 +6,7 @@ import { useState } from "react";
 const LoginPage = () => {
   const [showModal,setShowModal]=useState(false);
   return (
-    <div>
+    <div className="animate-scaleUp">
       <LoginHeader setShowModal={setShowModal} />
       <LoginBody showModal={showModal} setShowModal={setShowModal} />
       <img

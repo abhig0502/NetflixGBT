@@ -16,13 +16,13 @@ const VideoBackground = ({ Background_img, movieId }) => {
     const FilterData = json.results.filter((video) => video.type === "Trailer");
     const trailer = FilterData ? FilterData[0] : json.results[0];
     setTrailerKey(trailer?.key);
-    console.log(trailer?.key);
+    // console.log(trailer?.key);
   };
   useEffect(() => {
     getMovieVideo();
   }, []);
   return (
-    <div className="">
+    <div className="-mt-44">
       <iframe
        className="w-[100%] aspect-video"
         src={"https://www.youtube.com/embed/"+trailerKey+"?&autoplay=1&mute=1"}

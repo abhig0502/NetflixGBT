@@ -1,10 +1,15 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import MovieList from './MovieList';
+import lang from '../utils/LanguageConstants';
 
 const SecondaryContainer = () => {
   const movies=useSelector((store)=>store.movies);
-  console.log(movies?.NowPlayingMovies?.results); 
+  // console.log(movies); 
+
+  const langs=useSelector(store=>store.config.lang);
+
+
   return (
     <div className='bg-black'>
       {/* 
@@ -17,11 +22,13 @@ const SecondaryContainer = () => {
           movieCard(Your Next Watch)
        */}
 
-       <MovieList title={"Movies set in India"} movies={movies?.NowPlayingMovies?.results}/>
-       <MovieList title={"Trending"} movies={movies?.NowPlayingMovies?.results}/>
-       <MovieList title={"Popular"} movies={movies?.NowPlayingMovies?.results}/>
-       <MovieList title={"Upcoming Movies"} movies={movies?.NowPlayingMovies?.results}/>
-       <MovieList title={"Horror"} movies={movies?.NowPlayingMovies?.results}/>
+       <div className='animate-scaleUp'>
+       <MovieList title={lang[langs].moviesSetInIndia} movies={movies?.NowPlayingMovies?.results}/>
+       <MovieList title={lang[langs].trending} movies={movies?.NowPlayingMovies?.results}/>
+       <MovieList title={lang[langs].popular} movies={movies?.PopularMovies?.results}/>
+       <MovieList title={lang[langs].upComingMovies} movies={movies?.NowPlayingMovies?.results}/>
+       <MovieList title={lang[langs].horror} movies={movies?.NowPlayingMovies?.results}/>
+       </div>
        <div className='-mt-48 bg-blue-600'></div>
     </div>
   )

@@ -8,7 +8,9 @@ import { Provider } from "react-redux";
 import Store from "./utils/Store";
 import Error from "./components/Error";
 import MoviePage from "./components/MoviePage";
-
+import Movies from "./components/Movies";
+import TvShows from "./components/TvShows";
+import GptSearch from "./components/GptSearch";
 function App() {
   const appRouter = createBrowserRouter([
     {
@@ -24,9 +26,23 @@ function App() {
       element:<Error />
     },
     {
-      path:"/moviepage",
+      path:"/moviepage/:movieId",
       element:<MoviePage />
-    }
+    },
+    {
+      path:"/movies",
+      element:<Movies />
+    },
+    {
+      path:"/tvshows",
+      element:<TvShows />
+    },
+    {
+      path:"/gptsearch",
+      element:<GptSearch />
+    },
+    
+    
   ]);
 
   return (
