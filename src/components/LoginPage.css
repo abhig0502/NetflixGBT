@@ -1,0 +1,17 @@
+@media (max-width: 768px) {
+  .mobile-header {
+    text-align: center;
+    font-size: 1.25rem; /* Tailwind's text-lg */
+  }
+
+  .mobile-body {
+    /* padding: 1rem; */
+    margin: 0;
+  }
+
+  .mobile-image {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+  }
+}

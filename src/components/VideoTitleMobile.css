@@ -1,0 +1,46 @@
+/* TailwindCSS styles for mobile responsiveness */
+
+/* Mobile (small screens) */
+@media (max-width: 640px) {
+  .video-title-container {
+    padding: 20px; /* Reduce padding on mobile */
+    text-align: center; /* Center align the text */
+    position: relative;
+  }
+
+  .video-title-heading {
+    font-size: 2rem; /* Reduce font size for the title */
+    padding-top: rem; /* Adjust padding for the title */
+  }
+
+  .video-overview {
+    font-size: 1rem; /* Reduce font size for the overview */
+    margin: 0 10px; /* Add margin to avoid edge overlap */
+  }
+
+  .video-buttons {
+    flex-direction: column; /* Stack buttons vertically on mobile */
+    align-items: center;
+    margin-top: 1rem; /* Add margin to the buttons */
+  }
+
+  .video-button {
+    width: 90%; /* Set button width for mobile */
+    margin-bottom: 0.5rem; /* Add space between buttons */
+  }
+}
+
+/* Tablet and larger screens */
+@media (min-width: 641px) {
+  .video-title-heading {
+    font-size: 4rem; /* Larger font size for the title */
+  }
+
+  .video-overview {
+    font-size: 1.5rem; /* Larger font size for the overview */
+  }
+
+  .video-button {
+    width: auto; /* Default width for buttons */
+  }
+}

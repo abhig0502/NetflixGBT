@@ -1,0 +1,59 @@
+/* BaseHeaderMobile.css */
+
+/* Tailwind's breakpoints used for responsive design: 
+   sm - Small devices (640px and up)
+   md - Medium devices (768px and up)
+   lg - Large devices (1024px and up)
+*/
+
+/* Mobile styles for BaseHeader */
+@media (max-width: 640px) {
+  .mobile-header {
+     /* padding-left: 1rem; 
+     padding-right: 1rem; 
+     padding-top: 0.5rem; 
+     padding-bottom: 0.5rem;   */
+  }
+
+  .mobile-logo {
+    margin-top: 10px;
+    width: 90px;
+    height: 70px;
+  }
+
+  .mobile-end-element,
+  .mobile-mid-element {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.5rem;
+  }
+
+  /* Make midElement hidden on mobile */
+  .hide-mid-element {
+    display: none;
+  }
+}
+
+/* Tablet and larger devices */
+@media (min-width: 641px) {
+  .mobile-header {
+    /* padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem; */
+  }
+
+  .mobile-logo {
+    width: 11rem;
+  }
+
+  .mobile-end-element,
+  .mobile-mid-element {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .hide-mid-element {
+    display: block;
+  }
+}
